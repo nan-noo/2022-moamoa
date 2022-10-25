@@ -17,4 +17,6 @@ export const Default = Template.bind({});
 Default.args = {
   imageUrl: 'https://picsum.photos/id/186/200/200',
   username: 'airman5573',
+  studyCount: 5,
+  startDate: '2022-10-25',
 };
