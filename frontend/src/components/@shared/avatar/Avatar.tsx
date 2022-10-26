@@ -1,4 +1,4 @@
-import * as CSS from 'csstype';
+import { type Properties } from 'csstype';
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -44,7 +44,7 @@ const Self = styled.div<StyledAvatarProps>`
   `}
 `;
 
-type AvatarImageProps = Omit<ImageProps, keyof CSS.Properties | 'shape'> & {
+type AvatarImageProps = Omit<ImageProps, keyof Properties | 'shape'> & {
   src: AvatarProps['src'];
   size: AvatarProps['size'];
   alt: AvatarProps['name'];

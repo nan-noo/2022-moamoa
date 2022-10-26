@@ -1,23 +1,21 @@
-import type * as CSS from 'csstype';
+import type { Properties } from 'csstype';
 
 import { css, useTheme } from '@emotion/react';
 
 import { type CustomCSS, getResponsiveStyle, resolveCustomCSS } from '@styles/custom-css';
 import { type BreakpointsFor } from '@styles/responsive';
 
-export type CSSProperty = keyof CSS.StandardProperties;
-
 export type FlexBoxStyleProperty = {
-  alignItems?: CSS.Properties['alignItems'];
-  justifyContent?: CSS.Properties['justifyContent'];
-  flexDirection?: CSS.Properties['flexDirection'];
-  flexWrap?: CSS.Properties['flexWrap'];
-  rowGap?: CSS.Properties['gap'];
-  columnGap?: CSS.Properties['gap'];
+  alignItems?: Properties['alignItems'];
+  justifyContent?: Properties['justifyContent'];
+  flexDirection?: Properties['flexDirection'];
+  flexWrap?: Properties['flexWrap'];
+  rowGap?: Properties['gap'];
+  columnGap?: Properties['gap'];
 };
 
 export type FlexItemStyleProperty = {
-  grow: CSS.Properties['flexGrow'];
+  grow: Properties['flexGrow'];
   custom: CustomCSS<'width' | 'height' | 'maxWidth' | 'maxHeight' | 'minWidth' | 'minHeight'>;
 };
 
@@ -73,7 +71,7 @@ const Flex: React.FC<FlexBoxProps> = ({
 };
 
 export type FlexItemStyle = {
-  flexGrow?: CSS.Properties['flexGrow'];
+  flexGrow?: Properties['flexGrow'];
 };
 
 export type FlexItemProps = Partial<{ children: React.ReactNode } & FlexItemStyle>;
