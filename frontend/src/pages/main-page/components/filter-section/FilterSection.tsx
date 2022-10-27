@@ -12,6 +12,7 @@ import { useGetTags } from '@api/tags';
 import Divider from '@shared/divider/Divider';
 
 import FilterButtonList from '@main-page/components/filter-button-list/FilterButtonList';
+import FilterSectionSkeleton from '@main-page/components/filter-section-skeleton/FilterSectionSkeleton';
 import FilterSlideButton, { FilterSlideButtonProps } from '@main-page/components/filter-slide-button/FilterSlideButton';
 
 export type FilterSectionProps = {
@@ -67,7 +68,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       </FilterSlideButtonContainer>
       <FilterListContainer ref={sliderRef}>
         {(() => {
-          if (isLoading) return <Loading />;
+          if (isLoading) return <FilterSectionSkeleton />;
           if (isError) return <Error />;
           return (
             <>
@@ -76,7 +77,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 selectedFilters={selectedFilters}
                 onFilterButtonClick={handleFilterButtonClick}
               />
-              <Divider orientation="vertical" verticalLength="40px" space={0} />
+              <Divider orientation="vertical" verticalLength="40px" />
               <FilterButtonList
                 filters={generationTags}
                 selectedFilters={selectedFilters}
