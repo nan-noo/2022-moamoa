@@ -13,6 +13,7 @@ import PageWrapper from '@shared/page-wrapper/PageWrapper';
 
 import CreateNewStudyButton from '@main-page/components/create-new-study-button/CreateNewStudyButton';
 import FilterSection from '@main-page/components/filter-section/FilterSection';
+import StudyCardListSkeleton from '@main-page/components/study-card-list-skeleton/StudyCardListSkeleton';
 import StudyCard from '@main-page/components/study-card/StudyCard';
 import useMainPage from '@main-page/hooks/useMainPage';
 
@@ -25,12 +26,13 @@ const MainPage: React.FC = () => {
   const searchedStudies = data?.pages.reduce<Array<Study>>((acc, cur) => [...acc, ...cur.studies], []);
 
   return (
-    <Page>
+    <div>
       <FilterSection selectedFilters={selectedFilters} onFilterButtonClick={handleFilterButtonClick} />
       <PageWrapper>
         {(() => {
           if (isError) return <Error />;
-          if (!searchedStudies || (searchedStudies && searchedStudies.length === 0)) return <NoResult />;
+          if (!searchedStudies) return;
+          if (searchedStudies.length === 0) return <NoResult />;
           return (
             <InfinitScrollCardList
               isContentLoading={isFetching}
@@ -39,9 +41,10 @@ const MainPage: React.FC = () => {
             />
           );
         })()}
+        {isFetching && <StudyCardListSkeleton />}
       </PageWrapper>
       <CreateNewStudyButton onClick={handleCreateNewStudyButtonClick} />
-    </Page>
+    </div>
   );
 };
 
@@ -75,7 +78,6 @@ const InfinitScrollCardList: React.FC<InfinitScrollCardListProps> = ({
         </li>
       ))}
     </CardList>
-    {isContentLoading && <Loading />}
   </InfiniteScroll>
 );
 
@@ -100,7 +102,3 @@ const CardList = styled.ul`
     place-content: center;
   }
 `;
-
-const Page = styled.div``;
-
-const Loading = () => <div>Loading...</div>;
