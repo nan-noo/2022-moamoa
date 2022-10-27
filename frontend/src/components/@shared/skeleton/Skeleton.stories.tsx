@@ -31,4 +31,7 @@ const TextTemplate: Story<TextSkeletonProps> = props => <Skeleton.Text {...props
 export const Text = TextTemplate.bind({});
 Text.args = {
   fontSize: 'xs',
+  custom: {
+    width: '60%',
+  },
 };

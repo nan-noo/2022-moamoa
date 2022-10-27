@@ -2,6 +2,7 @@ import type { Properties } from 'csstype';
 
 import { css, useTheme } from '@emotion/react';
 
+import { CustomCSS, resolveCustomCSS } from '@styles/custom-css';
 import { type ThemeFontSize } from '@styles/theme';
 
 import { AVATAR_SIZE } from '@shared/avatar/Avatar';
@@ -67,20 +68,24 @@ const CircularSkeleton: React.FC<CircularSkeletonProps> = ({ size }) => {
 
 export type TextSkeletonProps = {
   fontSize: ThemeFontSize;
+  custom?: CustomCSS<'width'>;
 };
-const TextSkeleton: React.FC<TextSkeletonProps> = ({ fontSize }) => {
+const TextSkeleton: React.FC<TextSkeletonProps> = ({ fontSize, custom }) => {
   const theme = useTheme();
 
   return (
-    <div
+    <span
       css={css`
+        display: block;
+
+        width: 100%;
         height: ${theme.fontSize[fontSize]};
 
-        line-height: ${theme.fontSize[fontSize]};
         border-radius: ${theme.radius.xs};
         background-color: ${theme.colors.secondary.base};
 
         ${applySkeletonAnimation()}
+        ${resolveCustomCSS(custom)}
       `}
     />
   );
