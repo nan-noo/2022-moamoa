@@ -14,3 +14,4 @@ export { default as TrashcanIcon } from '@shared/icons/trashcan-icon/TrashcanIco
 export { default as DownArrowIcon } from '@shared/icons/down-arrow-icon/DownArrowIcon';
 export { default as XMarkIcon } from '@shared/icons/x-mark-icon/XMarkIcon';
 export { default as FolderIcon } from '@shared/icons/folder-icon/FolderIcon';
+export { default as GithubIcon } from '@shared/icons/github-icon/GithubIcon';

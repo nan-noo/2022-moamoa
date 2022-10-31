@@ -23,7 +23,9 @@ export type FlexBoxProps = Partial<
   {
     children: React.ReactNode;
     fluid: boolean;
-    custom?: CustomCSS<'width' | 'height' | 'maxWidth' | 'maxHeight' | 'minWidth' | 'minHeight' | 'marginBottom'>;
+    custom?: CustomCSS<
+      'width' | 'height' | 'maxWidth' | 'maxHeight' | 'minWidth' | 'minHeight' | 'marginBottom' | 'padding'
+    >;
   } & FlexBoxStyleProperty &
     BreakpointsFor<FlexBoxStyleProperty>
 >;
